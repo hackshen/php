@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$.ajax({
+				type:"get",
+				//url:"./json/skill.json",
+				//url:"./json/work.json",
+				url:"./json/11.json",
+				async:true,
+				dataType:'json',
+				success:function(data){
+					for(var i=0;i<data.length;i++){
+						$.ajax({
+							type:"post",
+							url:"./add_data.php",
+							data:{
+//								category:data[i].category,
+//								name:data[i].name,
+//								time:data[i].time,
+//								level:data[i].level
+
+
+//								category:data[i].category,
+//								url:data[i].url,
+//								image:data[i].image,
+//								name:data[i].name,
+//								time:data[i].time,
+//								posts:data[i].posts,
+//								reportto:data[i].reportto,
+//								peoples:data[i].peoples,
+//								projects:data[i].projects
+								
+								category:data[i].category,
+								name:data[i].name,
+								url:data[i].url,
+								image:data[i].image,
+								description:data[i].description,
+								detail:data[i].detail,
+								tech:data[i].tech
+							},
+							async:true,
+							success:function(data){
+								console.log(data);
+							}
+						});
+					}
+					
+				}
+			});
+			
+		</script>
+	</body>
+</html>
