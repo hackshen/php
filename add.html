@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$.ajax({
+				type:"get",
+				url:"./json/11.json", //请求JSon的Url 
+				async:true,
+				dataType:'json',
+				success:function(data){
+					for(var i=0;i<data.length;i++){
+						$.ajax({
+							type:"post",
+							url:"./add_data.php",  //把数据传给php文件
+							data:{
+								category:data[i].category,
+								name:data[i].name,
+								time:data[i].time,
+								url:data[i].url
+
+							},
+							async:true,
+							success:function(data){
+								console.log(data);
+							}
+						});
+					}
+					
+				}
+			});
+			
+		</script>
+	</body>
+</html>
